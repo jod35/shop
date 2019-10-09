@@ -6,7 +6,12 @@ from shop.forms import SignUpForm,LoginForm
 
 @app.route('/')
 def index():
-   return render_template('index.html')
+   products=Product.query.filter_by(seller=current_user)
+   count =0
+
+   for i in products:
+      count +=1
+   return render_template('index.html',count=count)
 
 @app.route('/products')
 def products_page():
@@ -68,6 +73,10 @@ def add_product():
    disc=selling_price * d
    final_price=selling_price -disc
 
+   product=Product.query.filter_by(prod_name=prod_name).first()
+   if product:
+      flash("Duplicate Record Found")
+      return redirect(url_for('products_page'))
    new_product=Product(
       prod_name=prod_name,
       cost_price=cost_price,
@@ -77,10 +86,22 @@ def add_product():
       prod_type=prod_type,
       seller=current_user
    )
-   db.session.add(new_product)
-   db.session.commit()
-   return redirect(url_for('add_product'))
+   try:
+          
+      db.session.add(new_product)
+      db.session.commit()
+      flash("Product Added Successfully")
+      return redirect(url_for('products_page'))
+   
+   except:
+      flash("Product not added")
+      
 
-
+@app.route('/all')
+def all_products():
+   products=Product.query.filter_by(seller=current_user).all()
+   if not products:
+      flash("There are no products at all.")
+   return render_template('all.html',products=products)
 
    

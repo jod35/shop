@@ -1,5 +1,16 @@
 {% extends 'layout.html' %}
 {% block body %}
+{%with messages =get_flashed_messages()%}
+{% if messages %}
+   {% for message in messages %}
+       <center>
+           <div class="flash">
+               {{ message }}
+           </div>
+       </center>
+   {% endfor %}
+{% endif %}
+{%endwith%}
 <div class="container">
     <div class="form">
         <h3>Sign Up To Sell With Us</h3>
@@ -31,7 +42,7 @@
     </div>
     <div class="decrip">
         <div class="list-group">
-            <li class="list-group-item"><a href="">View all Products</a></li>
+            <li class="list-group-item"><a href="{{url_for('all_products')}}">View all Products</a></li>
             <li class="list-group-item"><a href="">Manage Products</a></li>
             
         </div>

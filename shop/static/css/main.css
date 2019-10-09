@@ -72,6 +72,9 @@ td{
     width: 600px;
     color: #945d15;
 }
+.all{
+    border: #945d15 solid 1px;
+}
  .list-group{
     width: 100%;
 }
