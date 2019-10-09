@@ -1,9 +1,35 @@
+body{
+    background-color: lightgray;
+}
 .main-body{
-    min-height: 535px;
+    min-height: 500px;
+
 
 }
 footer{
-    background-color: #010d16;
+    background-color: #945d15;
     padding: 20px;
+    color: white}
+.container{
+    display: flex;
+    padding: 20px;
+}
+.list-group-item{
+    background-color: #945d15;
+
+}
+.list-group-item a{
     color: white;
+}
+.form{
+   text-align: center;
+   width: 60%;
+   color: #945d15;
+}
+.mybtn{
+    color: white;
+    background-color: #945d15;
+}
+.nav h1{
+    color: #945d15;
 }

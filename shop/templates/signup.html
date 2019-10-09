@@ -1,4 +1,41 @@
 {% extends 'layout.html' %}
 {% block body %}
+<div class="container">
+   
+    <div class="form">
+            <h3>Sign Up To Sell With Us</h3>
+        <form action="{{url_for('sign_up')}}" method="post">
+            <div class="form-group">
+               <p>{{form.username.label}}</p>
+               {{ form.username() }}  
+            </div>
 
+            <div class="form-group">
+                    <p>{{form.email.label}}</p>
+                    {{ form.email() }}  
+            </div>
+
+            <div class="form-group">
+                    <p>{{form.password.label}}</p>
+                    {{ form.password() }}  
+            </div>
+
+            <div class="form-group">
+                    <p>{{form.confirm.label}}</p>
+                    {{ form.confirm() }}  
+            </div>
+
+            <div class="form-group">
+                    {{ form.submit(class='btn mybtn') }}  
+            </div>
+        </form>
+    </div>
+    <div class="decrip">
+        <div class="list-group">
+            <li class="list-group-item"><a href="">About Selling With Us</a></li>
+            <li class="list-group-item"><a href="">Terms an Conditons</a></li>
+            
+        </div>
+    </div>
+</div>
 {% endblock body %}

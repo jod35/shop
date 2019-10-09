@@ -1,6 +1,6 @@
 from flask import render_template,redirect,url_for
 from shop import app,db
-
+from shop.forms import SignUpForm
 
 @app.route('/')
 def index():
@@ -12,7 +12,8 @@ def products_page():
 
 @app.route('/signup')
 def sign_up():
-   return render_template('signup.html')
+   form=SignUpForm()
+   return render_template('signup.html',form=form)
 
 @app.route('/login')
 def login_page():
