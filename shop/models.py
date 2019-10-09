@@ -15,7 +15,6 @@ class Seller(db.Model):
     username=db.Column(db.String(255),nullable=False,unique=True)
     email=db.Column(db.String(80),nullable=False,unique=True)
     password=db.Column(db.Text(),nullable=False)
-    type=db.Column(db.String(25),nullable=False)
     comm_type=db.Column(db.String(25),nullable=False)
     products=db.relationship("Product",backref="seller",lazy=True)
 

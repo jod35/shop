@@ -1,35 +1,36 @@
 {% extends 'layout.html' %}
 {% block body %}
+{%with messages =get_flashed_messages()%}
+{% if messages %}
+   {% for message in messages %}
+       <center>
+           <div class="flash">
+               {{ message }}
+           </div>
+       </center>
+   {% endfor %}
+{% endif %}
+{%endwith%}
 <div class="container">
-   
+    
     <div class="form">
             <h3>Sign Up To Sell With Us</h3>
         <form action="{{url_for('sign_up')}}" method="post">
-            <div class="form-group">
-               <p>{{form.username.label}}</p>
-               {{ form.username() }}  
-            </div>
-
-            <div class="form-group">
-                    <p>{{form.email.label}}</p>
-                    {{ form.email() }}  
-            </div>
-
-            <div class="form-group">
-                    <p>{{form.password.label}}</p>
-                    {{ form.password() }}  
-            </div>
-
-            <div class="form-group">
-                    <p>{{form.confirm.label}}</p>
-                    {{ form.confirm() }}  
-            </div>
-
-            <div class="form-group">
-                    {{ form.submit(class='btn mybtn') }}  
+            <p>{{form.username.label}}</p>
+            {{ form.username() }}  
+            <p>{{form.email.label}}</p>
+            {{ form.email() }}
+            <p>{{form.comm_type.label}}</p>
+            {{ form.comm_type() }}
+            <p>{{form.password.label}}</p>
+            {{ form.password() }}
+            <p>{{form.confirm.label}}</p>
+            {{ form.confirm() }}  
+            <br><br>         
+            {{ form.submit(class='btn mybtn') }}  
             </div>
         </form>
-    </div>
+    
     <div class="decrip">
         <div class="list-group">
             <li class="list-group-item"><a href="">About Selling With Us</a></li>
@@ -37,5 +38,6 @@
             
         </div>
     </div>
+
 </div>
 {% endblock body %}

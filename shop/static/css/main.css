@@ -10,6 +10,7 @@ footer{
     background-color: #945d15;
     padding: 20px;
     color: white}
+
 .container{
     display: flex;
     padding: 20px;
@@ -32,4 +33,17 @@ footer{
 }
 .nav h1{
     color: #945d15;
+}
+.welcome{
+    background-color: #945d15;
+    color: white;
+    padding: 250px;
+}
+.welbtn{
+    color: #945d15;
+    background-color: white;
+}
+.flash{
+    color: #945d15;
+    font-weight: bold;
 }

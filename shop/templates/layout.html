@@ -15,12 +15,10 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #945d15;">
-            <a class="navbar-brand" href="#"><h1>DoorMart</h1></a>
+            <a class="navbar-brand" href="{{url_for('index')}}"><h1>DoorMart</h1></a>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{url_for('index')}}">Home <span class="sr-only">(current)</span></a>
-                    </li>
+                   
                     <li class="nav-item">
                         <a class="nav-link active" href="{{url_for('login_page')}}">Login</a>
                     </li>
