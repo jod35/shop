@@ -14,7 +14,10 @@ footer{
 .container{
     display: flex;
     padding: 20px;
+    justify-content: space-between;
 }
+
+
 .list-group-item{
     background-color: #945d15;
 
@@ -24,8 +27,12 @@ footer{
 }
 .form{
    text-align: center;
-   width: 60%;
-   color: #945d15;
+   width:400px;
+   color: white;
+   background-color: #945d15;
+   border-radius: 50px;
+   padding: 15px;
+
 }
 .mybtn{
     color: white;

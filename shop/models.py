@@ -1,6 +1,9 @@
-from shop import db
+from shop import db,login_manager
+from flask_login import UserMixin
 
-class Admin(db.Model):
+
+
+class Admin(db.Model,UserMixin):
     id=db.Column(db.Integer(),primary_key=True)
     username=db.Column(db.String(255),nullable=False,unique=True)
     email=db.Column(db.String(80),nullable=False,unique=True)
@@ -10,7 +13,7 @@ class Admin(db.Model):
         return "user {}".format(self.username)
 
 
-class Seller(db.Model):
+class Seller(db.Model,UserMixin):
     id=db.Column(db.Integer(),primary_key=True)
     username=db.Column(db.String(255),nullable=False,unique=True)
     email=db.Column(db.String(80),nullable=False,unique=True)
@@ -33,3 +36,8 @@ class Product(db.Model):
 
     def __repr__(self):
         return "product {}".format(self.prod_name)
+
+login_manager.login_view='login_page'
+@login_manager.user_loader
+def load_user(seller_id):
+    return Seller.query.get(int(seller_id))

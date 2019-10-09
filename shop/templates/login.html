@@ -1,4 +1,46 @@
 {% extends 'layout.html' %}
 {% block body %}
 
+{%with messages =get_flashed_messages()%}
+{% if messages %}
+   {% for message in messages %}
+       <center>
+           <div class="flash">
+               {{ message }}
+           </div>
+       </center>
+   {% endfor %}
+{% endif %}
+{%endwith%}
+<div class="container">
+    
+    <div class="form">
+            <h3>Login</h3>
+        <form action="{{url_for('login_page')}}" method="post">
+            <p>{{form.email.label}}</p>
+            {{ form.email() }}
+            
+            <p>{{form.password.label}}</p>
+            {{ form.password() }}
+            <br><br>
+                 
+            {{ form.submit(class='btn welbtn') }}  
+            <br><br>
+            <small>
+                    Have no account yet , <a href="{{url_for('sign_up')}}" style="color: white;">Signup</a>
+            </small>
+            </div>
+
+          
+        </form>
+    
+    <div class="decrip">
+        <div class="list-group">
+            <li class="list-group-item"><a href="">About Selling With Us</a></li>
+            <li class="list-group-item"><a href="">Terms an Conditons</a></li>
+            
+        </div>
+    </div>
+
+</div>
 {% endblock body %}

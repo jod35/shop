@@ -1,7 +1,8 @@
 from flask import render_template,redirect,url_for,request,flash
 from shop.models import Seller,Admin,Product
 from shop import app,db,bcrypt
-from shop.forms import SignUpForm
+from flask_login import login_user,logout_user,login_required,current_user
+from shop.forms import SignUpForm,LoginForm
 
 @app.route('/')
 def index():
@@ -32,6 +33,24 @@ def sign_up():
 
    return render_template('signup.html',form=form)
 
-@app.route('/login')
+@app.route('/login',methods=['GET', 'POST'])
 def login_page():
-   return render_template('login.html')
+   form=LoginForm()
+   email=request.form.get('email')
+   password=request.form.get('password')
+
+   user = Seller.query.filter_by(email=email).first()
+
+   if user and bcrypt.check_password_hash(user.password,password):
+      try:
+         login_user(user)
+         return redirect(url_for('index'))
+      except :
+         flash("Invalid Username or Password")
+         return redirect(url_for('login_page'))
+   return render_template('login.html',form=form)
+
+@app.route('/logout')
+def logout():
+   logout_user()
+   return redirect(url_for('login_page'))

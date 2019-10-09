@@ -10,3 +10,8 @@ class SignUpForm(FlaskForm):
     comm_type=StringField("Commodities to sell ",validators=[DataRequired()])
     confirm=PasswordField("Confirm Password",validators=[DataRequired(),Length(max=20)])
     submit=SubmitField("Sign Up")
+
+class LoginForm(FlaskForm):
+    email=StringField("Email",validators=[DataRequired(),Length(max=80)])
+    password=PasswordField("Password",validators=[DataRequired(),Length(max=20),EqualTo('confirm')])
+    submit=SubmitField("Log In")
