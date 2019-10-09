@@ -1,4 +1,40 @@
 {% extends 'layout.html' %}
 {% block body %}
-
+<div class="container">
+    <div class="form">
+        <h3>Sign Up To Sell With Us</h3>
+    <form action="{{url_for('add_product')}}" method="post">
+       <P>Product Name</P>
+       <input type="text" name="prod_name" id="">
+       <p>Cost Price</p>
+       <input type="number" name="cost_price" id="">
+       <p>Mark Up (%)</p>
+       <input type="number" name="mark_up" id="">
+       <p>Discount (%)</p>
+       <input type="number" name="discount" id="">
+       <p>Stock</p>
+       <input type="number" name="stock" id="">
+       <p>Product Type</p>
+       <select name="prod_type" id="">
+           <option value="Beverage">Beverage</option>
+           <option value="Food">Food</option>
+           <option value="Clothing">Clothing</option>
+           <option value="Electronic">Electronics</option>
+           <option value="Machinery">Machinery</option>
+           <option value="Fuel /Lubricant">Fuel/Lubricants</option>
+           <option value="Toiletries">Beverage</option>
+       </select>
+       <br><br>
+       <input type="submit" value="Add Product">
+    </form>
+  
+    </div>
+    <div class="decrip">
+        <div class="list-group">
+            <li class="list-group-item"><a href="">View all Products</a></li>
+            <li class="list-group-item"><a href="">Manage Products</a></li>
+            
+        </div>
+    </div>
+</div>
 {% endblock body %}
