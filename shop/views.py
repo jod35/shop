@@ -54,22 +54,24 @@ def logout():
    logout_user()
    return redirect(url_for('login_page'))
 
-@app.route('/addproduct',methods=['POST'])
+@app.route('/addproduct',methods=['POST','GET'])
 def add_product():
    prod_name=request.form.get('prod_name')
-   cost_price=request.form.get('cost_price')
-   mark_up=request.form.get('mark_up')
-   discount=request.form.get('discount')
+   cost_price=int(request.form.get('cost_price'))
+   mark_up=int(request.form.get('mark_up'))
+   discount=int(request.form.get('discount'))
    stock=request.form.get('stock')
    prod_type=request.form.get('prod_type')
    
-   disc=cost_price - (int(discount /100) *cost_price)
-   seling_price = (cost_price + ((mark_up/100) * cost_price)) -disc
+   selling_price=cost_price + (cost_price * (mark_up/100))
+   d=discount/100
+   disc=selling_price * d
+   final_price=selling_price -disc
 
    new_product=Product(
       prod_name=prod_name,
       cost_price=cost_price,
-      selling_price=seling_price,
+      selling_price=final_price,
       discount=disc,
       stock=stock,
       prod_type=prod_type,
@@ -77,8 +79,8 @@ def add_product():
    )
    db.session.add(new_product)
    db.session.commit()
-   return redirect(url_for(add_product))
+   return redirect(url_for('add_product'))
 
 
 
-   pass
+   

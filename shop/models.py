@@ -27,11 +27,11 @@ class Seller(db.Model,UserMixin):
 class Product(db.Model):
     product_id=db.Column(db.Integer(),primary_key=True)
     prod_name=db.Column(db.String(255),nullable=False,unique=True)
-    selling_price=db.Column(db.Integer(),nullable=False,unique=True)
-    cost_price=db.Column(db.Integer(),nullable=False,unique=True)
-    discount=db.Column(db.Integer(),nullable=False,unique=True)
-    stock=db.Column(db.Integer(),nullable=False,unique=True)
-    prod_type=db.Column(db.String(80),nullable=False,unique=True)
+    selling_price=db.Column(db.Integer(),nullable=False)
+    cost_price=db.Column(db.Integer(),nullable=False)
+    discount=db.Column(db.Integer(),nullable=False)
+    stock=db.Column(db.Integer(),nullable=False)
+    prod_type=db.Column(db.String(80),nullable=False)
     seller_id=db.Column(db.Integer(),db.ForeignKey('seller.id'))
 
     def __repr__(self):
