@@ -22,8 +22,18 @@ footer{
     background-color: #945d15;
 
 }
+.list-group-item:hover{
+    background-color:coral;
+
+}
 .list-group-item a{
     color: white;
+
+}
+.list-group-item a:hover{
+    color:#945d15;
+    
+    list-style-type: none;
 }
 .form{
    text-align: center;
@@ -53,4 +63,23 @@ footer{
 .flash{
     color: #945d15;
     font-weight: bold;
+}
+th{
+    color: #945d15;
+    
+}
+td{
+    width: 600px;
+    color: #945d15;
+}
+ .list-group{
+    width: 100%;
+}
+.list{
+    background-color: #945d15;
+    width: 30%;
+    height: 650px;
+}
+.dashboard {
+    display: flex;
 }

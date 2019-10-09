@@ -38,7 +38,6 @@ def login_page():
    form=LoginForm()
    email=request.form.get('email')
    password=request.form.get('password')
-
    user = Seller.query.filter_by(email=email).first()
 
    if user and bcrypt.check_password_hash(user.password,password):
