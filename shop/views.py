@@ -5,6 +5,7 @@ from flask_login import login_user,logout_user,login_required,current_user
 from shop.forms import SignUpForm,LoginForm
 
 @app.route('/')
+@login_required
 def index():
    products=Product.query.filter_by(seller=current_user)
    count =0
